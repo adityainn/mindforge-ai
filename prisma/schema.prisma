@@ -1,0 +1,98 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Task {
+  id             String    @id @default(uuid())
+  title          String
+  description    String?
+  priority       String    // "LOW", "MEDIUM", "HIGH"
+  category       String    // "Study", "Coding", "Writing", "Research", "Other"
+  dueDate        DateTime?
+  estPomodoros   Int       @default(1)
+  actPomodoros   Int       @default(0)
+  completed      Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+model PomodoroSession {
+  id         String   @id @default(uuid())
+  duration   Int      // Session duration in minutes (e.g., 25)
+  type       String   // "WORK", "SHORT_BREAK", "LONG_BREAK"
+  createdAt  DateTime @default(now())
+}
+
+model FlashcardDeck {
+  id          String      @id @default(uuid())
+  name        String
+  description String?
+  cards       Flashcard[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Flashcard {
+  id          String             @id @default(uuid())
+  deckId      String
+  deck        FlashcardDeck      @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  front       String
+  back        String
+  interval    Int                @default(0) // Days
+  repetitions Int                @default(0)
+  easeFactor  Float              @default(2.5)
+  nextReview  DateTime           @default(now())
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  history     FlashcardHistory[]
+}
+
+model FlashcardHistory {
+  id         String    @id @default(uuid())
+  cardId     String
+  card       Flashcard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  grade      Int       // User feedback grade (0-5)
+  reviewedAt DateTime  @default(now())
+}
+
+model Quiz {
+  id          String        @id @default(uuid())
+  title       String
+  score       Int           // Number of correct answers
+  total       Int           // Total questions
+  createdAt   DateTime      @default(now())
+  history     QuizHistory[]
+}
+
+model QuizHistory {
+  id        String   @id @default(uuid())
+  quizId    String
+  quiz      Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  score     Int
+  takenAt   DateTime @default(now())
+}
+
+model Streak {
+  id             String   @id @default(uuid())
+  currentStreak  Int      @default(0)
+  longestStreak  Int      @default(0)
+  lastActiveDate DateTime @default(now())
+}
+
+model Achievement {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  unlockedAt  DateTime @default(now())
+}
+
+model ChatMessage {
+  id        String   @id @default(uuid())
+  role      String   // "user", "assistant"
+  content   String
+  createdAt DateTime @default(now())
+}

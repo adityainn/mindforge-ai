@@ -1,0 +1,211 @@
+.pomodoroContainer {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .pomodoroContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.timerCard {
+  padding: 48px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.modeSelector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  padding: 6px;
+  border-radius: 30px;
+}
+
+.modeButton {
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.modeButton:hover {
+  color: var(--text-primary);
+}
+
+.modeButtonActive {
+  background: var(--accent-gradient);
+  color: white;
+  box-shadow: var(--glow-shadow);
+}
+
+.timerDisplay {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.circleSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+.timeText {
+  font-size: 4.5rem;
+  font-weight: 800;
+  font-family: var(--font-outfit);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  z-index: 10;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.controlBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition-fast);
+  color: white;
+}
+
+.btnPlay {
+  background: var(--accent-gradient);
+  box-shadow: var(--glow-shadow);
+  width: 72px;
+  height: 72px;
+}
+
+.btnPlay:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+.btnPause {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.btnPause:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.btnReset {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--accent-red);
+}
+
+.btnReset:hover {
+  background: rgba(239, 68, 68, 0.25);
+  transform: scale(1.05);
+}
+
+.taskAssociation {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.taskLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.taskSelect {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+}
+
+.taskSelect:focus {
+  border-color: var(--accent-purple);
+}
+
+.infoCard {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+
+.infoStats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.infoStatItem {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.infoStatLabel {
+  color: var(--text-secondary);
+}
+
+.infoStatVal {
+  font-weight: 600;
+}
+
+.instructionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.instructionsList li {
+  margin-bottom: 4px;
+}
