@@ -1,4 +1,4 @@
-import { prisma } from "./prisma.ts";
+import { prisma } from "./prisma";
 
 async function verifyAll() {
   console.log("=========================================");

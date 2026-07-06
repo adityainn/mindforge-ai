@@ -134,9 +134,21 @@ export default function QuizPage() {
       }
 
       const data = await res.json();
+      
+      // Reset file state and clear DOM input value to allow uploading the same file again
+      setPdfFile(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+      
       return data.text;
     } catch (err: any) {
       alert(err.message || "Error parsing PDF");
+      // Clear file state and DOM input value on error as well
+      setPdfFile(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
       return "";
     } finally {
       setIsParsingPdf(false);
