@@ -180,7 +180,12 @@ http://localhost:3000
 
  📸 Screenshots
 
-Coming Soon
+<img width="2930" height="1606" alt="image" src="https://github.com/user-attachments/assets/a0494f56-85ca-4601-ae9f-78ac370a2c56" />
+
+<img width="2914" height="1634" alt="image" src="https://github.com/user-attachments/assets/6fe43c85-67b0-45fc-ac21-a58a8a072cbc" />
+![Uploading image.png…]()
+![Uploading image.png…]()
+![Uploading image.png…]()
 - Dashboard
 - Task Manager
 - Pomodoro Timer
